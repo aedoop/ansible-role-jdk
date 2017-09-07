@@ -1,0 +1,9 @@
+---
+# defaults file for jdk
+
+package_name: jdk
+package_version: 1.8
+command_check_version: java -version
+
+# push or pull
+install_mode: push

@@ -1,0 +1,21 @@
+---
+
+install_dir: /usr/local 
+temp_dir: /usr/local/src
+
+# user: jdk 
+# group: jdk
+
+
+packages_by_push: 
+  "1.8":
+    x86_64:
+      package: jdk-8u121-linux-x64.tar.gz
+      path: jdk-8u121-linux-x64.tar.gz
+
+packages_by_pull:
+  "1.8":
+    x86_64:
+      package: go1.8.3.linux-amd64.tar.gz
+      url: https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
+      #url: ftp://10.0.250.100/pub/golang/linux/go1.8.3.linux-amd64.tar.gz

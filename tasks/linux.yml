@@ -1,0 +1,19 @@
+---
+
+# - debug: msg="hello world linux"
+
+- name: Add the Linux OS specific varibles
+  include_vars: linux.yml
+
+- name: Check whether {{ package_name }} is already installed for linux
+  command: "{{ command_check_version }}"
+  failed_when: false
+  changed_when: false
+  register: version_check_result
+
+- set_fact:
+    is_installed: "{{ version_check_result.rc == 0 }}"
+
+- name: Install {{ package_name }} for linux by {{ install_mode }}
+  include: "linux-{{ install_mode }}.yml"
+  when: not is_installed
