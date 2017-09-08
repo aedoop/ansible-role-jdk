@@ -1,10 +1,10 @@
 ---
 # tasks file for jdk
 
-- name: Install golang for linux
-  include: linux.yml
-  when: ansible_os_family!="Windows"
-
-- name: Install golang for window
-  include: window.yml
+- name: Set os_family fact
+  set_fact:
+    os_family: window
   when: ansible_os_family=="Windows"
+
+- name: Install {{ package_name }} for {{ os_family }}
+  include: "{{ os_family }}.yml"

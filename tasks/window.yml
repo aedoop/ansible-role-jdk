@@ -1,3 +1,14 @@
 ---
 
-- debug: msg="hello world linux"
+- name: Check whether {{ package_name }} is already installed for window
+  win_command: "{{ check_version_command }}"
+  failed_when: false
+  changed_when: false
+  register: version_check_result
+
+- set_fact:
+    is_installed: "{{ version_check_result.rc == 0 }}"
+
+- name: Install {{ package_name }} for window by {{ install_mode }}
+  include: "{{ os_family }}-{{ install_mode }}.yml"
+  when: not is_installed

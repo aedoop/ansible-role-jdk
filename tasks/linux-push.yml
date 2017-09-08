@@ -1,0 +1,17 @@
+---
+
+- name: Gather package info facts for linux
+  set_fact:
+    pkg_info: "{{ jdk_packages[package_version] }}"
+
+
+- name: Gather package other info facts for linux
+  set_fact:
+    pkg_other_info: "{{ pkg_info.linux[ansible_architecture] }}"
+  
+
+- name: Copy over the pre-downloaded package and unarchive it for linux
+  unarchive: src={{ pkg_other_info.push }} dest={{ pkg_other_info.install_dir }} copy=yes
+
+- name: Do common something for linux
+  include: linux-common.yml

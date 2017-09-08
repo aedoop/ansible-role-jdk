@@ -2,8 +2,10 @@
 # defaults file for jdk
 
 package_name: jdk
-package_version: 1.8
-command_check_version: java -version
-
+package_version: "1.8.0_144"
+check_version_command: java -version
+# user: jdk
+# group: jdk
+os_family: linux
 # push or pull
 install_mode: push
