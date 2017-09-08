@@ -1,0 +1,13 @@
+---
+
+
+- include: package-common.yml
+
+- name: Install {{ package_name }} for linux
+  unarchive: 
+    src: "{{ pkg_other_info.pull }}"
+    dest: "{{ pkg_other_info.install_dir }}"
+    remote_src: yes
+
+- name: Do common something for linux
+  include: linux-common.yml

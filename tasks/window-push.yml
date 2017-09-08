@@ -1,12 +1,6 @@
 ---
 
-- name: Gather package info facts for window
-  set_fact:
-    pkg_info: "{{ jdk_packages[package_version] }}"
-
-- name: Gather package other info facts for window
-  set_fact:
-    pkg_other_info: "{{ pkg_info.window[ansible_architecture] }}"
+- include: package-common.yml
 
 - name: Check and create install and temp directory for window
   win_file: path={{ item }} state=directory
@@ -18,7 +12,7 @@
 - name: Copy a install package for window
   win_copy: src={{ pkg_other_info.push }} dest={{ pkg_other_info.download_dir }}
 
-- name: Install {{ package_name }}
+- name: Install {{ package_name }} for window
   win_package: path={{ pkg_other_info.download_dir }}/{{ pkg_other_info.file }} productid=auto state=present
   failed_when: false
 

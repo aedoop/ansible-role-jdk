@@ -23,7 +23,7 @@ jdk_packages:
         install_dir: C:\Program Files\Java
         download_dir: C:\tmp
         push: jdk-8u144-windows-x64.exe
-        pull: ftp://10.0.250.100/pub/jdk/linux/jdk-8u144-windows-x64.exe
+        pull: ftp://10.0.250.100/pub/jdk/window/jdk-8u144-windows-x64.exe
       
 
     

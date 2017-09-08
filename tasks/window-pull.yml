@@ -1,0 +1,19 @@
+---
+
+- include: package-common.yml
+
+- name: Check and create install and temp directory for window
+  win_file: path={{ item }} state=directory
+  with_items:
+    - "{{ pkg_other_info.install_dir }}"
+    - "{{ pkg_other_info.download_dir }}"
+  
+- name: Download package for window
+  win_get_url: url={{ pkg_other_info.pull }} dest={{ pkg_other_info.download_dir }}/{{ pkg_other_info.file }}
+
+- name: Install {{ package_name }} for window
+  win_package: path={{ pkg_other_info.download_dir }}/{{ pkg_other_info.file }} productid=auto state=present
+  failed_when: false
+
+- name: Do common something for window
+  include: window-common.yml

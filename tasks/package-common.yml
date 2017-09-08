@@ -1,0 +1,9 @@
+---
+
+- name: Gather package info facts for {{ os_family }}
+  set_fact:
+    pkg_info: "{{ jdk_packages[package_version] }}"
+
+- name: Gather package other info facts for {{ os_family }}
+  set_fact:
+    pkg_other_info: "{{ pkg_info[os_family][ansible_architecture] }}"
