@@ -1,10 +1,5 @@
 ---
 
-# - debug: msg="hello world linux"
-
-# - name: Add the {{ os_family }} OS specific varibles
-#   include_vars: "{{ os_family }}.yml"
-
 - name: Check whether {{ package_name }} is already installed for linux
   command: "{{ check_version_command }}"
   failed_when: false
