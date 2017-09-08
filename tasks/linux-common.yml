@@ -1,0 +1,24 @@
+---
+
+- set_fact:
+    env_script_file: "{{ package_name }}.sh"
+- name: Setup the environment for linux
+  template: src={{ env_script_file }} dest=/etc/profile.d/{{ env_script_file }}
+
+- block:
+   - set_fact: group={{ user }}
+     when: group is not undefined
+  
+   - name: Add a {{ group }} group for linux
+     group: name={{ group }}
+   
+   - name: Add a {{ user }} user for linux
+     user: name={{ user }} group={{ group }}
+
+   - name: Change golang.sh script ownership, group and mode for linux
+     file: path=/etc/profile.d/{{ env_script_file }} owner={{ user }} group={{ group }} mode=0644
+  
+   - name: Change golang install dir ownership, group and mode for linux
+     file: path={{ install_dir }}/go owner={{ user }} group={{ group }} mode=0755 recurse=true
+  when: user is defined
+

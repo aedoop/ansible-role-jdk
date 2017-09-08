@@ -1,0 +1,17 @@
+---
+
+- name: Set the JAVA_HOME environment
+  win_path:
+    name: JAVA_HOME
+    elements: "{{ pkg_other_info.install_dir }}\\{{ pkg_info.dir }}"
+
+- name: Set the CLASSPATH environment
+  win_path:
+    name: CLASSPATH
+    elements: ".:{{ pkg_other_info.install_dir }}\\{{ pkg_info.dir }}\\lib\\dt.jar:{{ pkg_other_info.install_dir }}\\{{ pkg_info.dir }}\\lib\\tools.jar"
+
+- name: Set the Path environment
+  win_path: elements="{{ pkg_other_info.install_dir }}\\{{ pkg_info.dir }}\\bin"
+
+- name: Remove install package
+  win_file: path={{ pkg_other_info.download_dir }}/{{ pkg_other_info.file }} state=absent
