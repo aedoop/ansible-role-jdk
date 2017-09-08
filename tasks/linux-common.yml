@@ -19,6 +19,6 @@
      file: path=/etc/profile.d/{{ env_script_file }} owner={{ user }} group={{ group }} mode=0644
   
    - name: Change golang install dir ownership, group and mode for linux
-     file: path={{ install_dir }}/go owner={{ user }} group={{ group }} mode=0755 recurse=true
+     file: path={{ pkg_other_info.install_dir }}/{{ pkg_info.dir }} owner={{ user }} group={{ group }} mode=0755 recurse=true
   when: user is defined
 

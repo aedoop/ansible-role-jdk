@@ -4,8 +4,8 @@
 package_name: jdk
 package_version: "1.8.0_144"
 check_version_command: java -version
-# user: jdk
-# group: jdk
+user: jdk
+group: jdk
 os_family: linux
 # push or pull
 install_mode: push
