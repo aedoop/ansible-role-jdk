@@ -1,5 +1,6 @@
 ---
 
+
 - name: Check whether {{ package_name }} is already installed for window
   win_command: "{{ check_version_command }}"
   failed_when: false

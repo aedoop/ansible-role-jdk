@@ -5,7 +5,6 @@
 - name: Check and create install and temp directory for window
   win_file: path={{ item }} state=directory
   with_items:
-    - "{{ pkg_other_info.install_dir }}"
     - "{{ pkg_other_info.download_dir }}"
 
 

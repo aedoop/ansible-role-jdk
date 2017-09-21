@@ -1,10 +1,5 @@
 ---
 
-# install_dir: /usr/local 
-# temp_dir: /tmp
-
-# user: jdk 
-# group: jdk
 #  checksum:
 #  checksum_algo:
 jdk_packages:
@@ -19,26 +14,7 @@ jdk_packages:
         pull: ftp://10.0.250.100/pub/jdk/linux/jdk-8u144-linux-x64.tar.gz
     window:
       64-bit:
-        file: jdk-8u144-windows-x64.exe
-        install_dir: C:\Program Files\Java
+        file: jdk8.install.1.8.0_144.nupkg
         download_dir: C:\tmp
-        push: jdk-8u144-windows-x64.exe
-        pull: ftp://10.0.250.100/pub/jdk/window/jdk-8u144-windows-x64.exe
-      
-
-    
-
-      
-
-# packages_by_push: 
-#   "1.8":
-#     x86_64:
-#       package: jdk-8u144-linux-x64.tar.gz
-#       path: jdk-8u144-linux-x64.tar.gz
-
-# packages_by_pull:
-#   "1.8":
-#     x86_64:
-#       package: go1.8.3.linux-amd64.tar.gz
-#       url: https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
-      #url: ftp://10.0.250.100/pub/golang/linux/go1.8.3.linux-amd64.tar.gz
+        push: jdk8.install.1.8.0_144.nupkg
+        pull: ftp://10.0.250.100/pub/jdk/window/jdk8.install.1.8.0_144.nupkg

@@ -2,18 +2,19 @@
 
 - include: package-common.yml
 
-- name: Check and create install and temp directory for window
+- name: Check and create install and temp directory in {{ ansible_distribution }} by pull install
   win_file: path={{ item }} state=directory
   with_items:
-    - "{{ pkg_other_info.install_dir }}"
     - "{{ pkg_other_info.download_dir }}"
   
-- name: Download package for window
+- name: Download package in {{ ansible_distribution }} by pull install
   win_get_url: url={{ pkg_other_info.pull }} dest={{ pkg_other_info.download_dir }}/{{ pkg_other_info.file }}
 
-- name: Install {{ package_name }} for window
-  win_package: path={{ pkg_other_info.download_dir }}/{{ pkg_other_info.file }} productid=auto state=present
-  failed_when: false
+- name: Install {{ id }} in {{ ansible_distribution }} by pull install
+  win_chocolatey: name={{ id }}.install source={{ pkg_other_info.download_dir }} state=present
 
-- name: Do common something for window
-  include: window-common.yml
+- name: Remove install package in {{ ansible_distribution }} by pull install
+  win_file: path={{ pkg_other_info.download_dir }}/{{ pkg_other_info.file }} state=absent
+
+# - name: Do common something in {{ ansible_distribution }} by pull install
+#   include: window-common.yml
